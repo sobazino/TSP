@@ -124,11 +124,24 @@ function U02() {
   SETV.style.display = "block";
 }
 function U01(Arr, i) {
+  var OPT;
+  for (var PI of p) {
+    var index = p.indexOf(PI);
+    if (PI[0] == 0 && index <= i) {
+      OPT = PI;
+    }
+  }
   for (var o of p) {
-    if (o[0] != 0 && JSON.stringify(o[0]) == JSON.stringify(Arr[2][0]) && i != -1 && JSON.stringify(p[i][1]) == JSON.stringify(o[2][0])) {
-      Arr[2] = o;
-      U01(Arr[2], i);
-      break;
+    if (o[0] != 0 && JSON.stringify(o[0]) == JSON.stringify(Arr[2][0]) && i != -1) {
+      if (OPT && JSON.stringify(OPT[1]) == JSON.stringify(o[2][0])) {
+        Arr[2] = o;
+        U01(Arr[2], i);
+        break;
+      } else if (Arr[2][0][1].length == 1) {
+        Arr[2] = o;
+        U01(Arr[2], i);
+        break;
+      }
     }
   }
   return Arr;
@@ -138,7 +151,7 @@ function U00() {
   for (var Arr of p) {
     var index = p.indexOf(Arr);
     if (Arr[0] != 0) {
-      p[index] = U01(Arr, index - 1);
+      p[index] = U01(Arr, index);
       Temp.push(p[index]);
     } else {
       Temp.push(Arr);
@@ -299,6 +312,7 @@ function SETTEST(NUM) {
   INPUT.value = str;
 }
 SETTEST(1);
+
 function CC() {
   if (CCB) {
     document.documentElement.style.setProperty("--w", "#ffffff");
