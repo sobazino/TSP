@@ -25,7 +25,7 @@ body *:before,
 body *:after {
   box-sizing: inherit;
 }
-.CH {
+.HB {
   width: 50px;
   height: 50px;
   background: var(--a);
@@ -35,7 +35,7 @@ body *:after {
   justify-content: center;
   align-items: center;
 }
-.CH svg {
+.HB svg {
   width: 20px;
   height: 20px;
 }
