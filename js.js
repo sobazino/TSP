@@ -118,7 +118,9 @@ class TSP {
     }
     M[[k, a]] = Math.min(...values);
     PL.push([[k, a], SG[values.indexOf(M[[k, a]])]]);
-    P.push([0, SG[values.indexOf(M[[k, a]])]]);
+    if (a.length > 1) {
+      P.push([0, SG[values.indexOf(M[[k, a]])]]);
+    }
     return M[[k, a]];
   }
   MATRIX(matrix) {
